@@ -170,10 +170,14 @@ def expand(self, llm, beam_size=2, mini_step_size=32, ...):
 
 ## 使い方
 
-### インストール
+### セットアップ
 
 ```bash
-pip install mlx-lm
+# 依存パッケージのインストール
+uv sync
+
+# パッケージを追加する場合
+uv add <package>
 ```
 
 ### 基本的な使い方
@@ -237,8 +241,17 @@ for step in stream_reasoning_generate(model, tokenizer, prompt, max_tokens=256):
 
 ```bash
 # 標準の mlx-lm 生成（比較用）
-python mlx_example.py
+uv run mlx_example.py
 
 # MCTS を用いた推論生成
-python mcts_example.py
+uv run mcts_example.py
+
+# ツリー可視化つき推論生成
+uv run visualize_example.py
 ```
+
+---
+
+## 参考
+
+本実装は [Hajime-Y/reasoning-model](https://github.com/Hajime-Y/reasoning-model) を元に、[mlx-lm](https://github.com/ml-explore/mlx-lm) を用いて Apple Silicon 向けに移植・実装したものです。
